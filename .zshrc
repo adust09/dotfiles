@@ -32,25 +32,29 @@ alias nin='npm i'
 alias naf='npm audit fix'
 alias naff='npm audixt fix --force'
 alias nrd='npm run dev'
-alias nrs='npm run spa-dev'
 alias nrp='npm run product'
-alias nxv='npx vitest'
 
+# yarn
+alias yin='yarn install'
+alias yrd='yarn run dev'
+alias yrp='yarn run product'
+
+# プレビュー
 alias fzp='fzf --preview "head -100 {}"'
 
-# fzfでChromeの検索履歴を検索する
-fch() {
-    local cols sep google_history open
+# fzfでbraveの検索履歴を検索する
+fbrave() {
+    local cols sep brave_history open
     cols=$(( COLUMNS / 3 ))
     sep='{::}'
     if [ "$(uname)" = "Darwin" ]; then
-        google_history="$HOME/Library/Application Support/Google/Chrome/Default/History"
+        brave_history="$HOME/Library/Application Support/BraveSoftware/Brave-Browser/Default/History"
         open=open
     else
-        google_history="$HOME/.config/google-chrome/Default/History"
+        brave_history="$HOME/.config/brave/Default/History"
         open=xdg-open
     fi
-    cp -f "$google_history" /tmp/h
+    cp -f "$brave_history" /tmp/h
     sqlite3 -separator $sep /tmp/h \
         "select substr(title, 1, $cols), url
         from urls order by last_visit_time desc" |
