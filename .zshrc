@@ -9,4 +9,3 @@ fi
 export PATH=$HOME/.local/bin:$PATH
 export PATH=$HOME/.nodebrew/current/bin:$PATH
 
-./.zsh/ascii-art.zsh
