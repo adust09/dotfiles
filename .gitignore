@@ -55,11 +55,8 @@
 !/.xinitrc
 !/.xprofile
 !/.xsessionrc
-!/.config/
-!/.config/**
 !/.gitignore_global
 !/.gitconfig_shared
-
 !/README.md
 !/LICENSE
 !.gitignore

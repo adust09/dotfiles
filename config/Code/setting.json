@@ -1,0 +1,162 @@
+{
+  "terminal.integrated.scrollback": 2000000,
+  "editor.minimap.enabled": false, // ミニマップを非表示にする
+  "editor.renderControlCharacters": true, // 制御文字を表示する
+  "editor.suggestSelection": "first", // サジェスト一覧の初期表示項目設定
+  "breadcrumbs.enabled": true, // ファイルのパンくずリストを表示する
+  "files.insertFinalNewline": true, // ファイルの末尾を改行で終わらせる
+  "editor.fontFamily": "'Fira Code', Hasklig, Consolas, 'Courier New', monospace",
+  "editor.fontLigatures": true, // 合字を有効化
+  "editor.fontSize": 12, // フォントサイズを変更
+  "editor.renderLineHighlight": "all", // 選択行の行番号をハイライトする
+  "editor.cursorBlinking": "smooth", // カーソルが滑らかに点滅するように
+  "editor.cursorSmoothCaretAnimation": "on", // カーソルの点滅をアニメーション表示する
+  "editor.cursorStyle": "block", // カーソルの外観をブロックに変更
+  "files.autoGuessEncoding": true, // 画面全体の表示サイズはデフォルト
+  "editor.bracketPairColorization.enabled": true, // 括弧の対応を色付ける
+  // ---------- Language ----------
+  "[tex]": {
+    // スニペット補完中にも補完を使えるようにする
+    "editor.suggest.snippetsPreventQuickSuggestions": false,
+    // インデント幅を2にする
+    "editor.tabSize": 2
+  },
+  "[latex]": {
+    // スニペット補完中にも補完を使えるようにする
+    "editor.suggest.snippetsPreventQuickSuggestions": false,
+    // インデント幅を2にする
+    "editor.tabSize": 2
+  },
+  "[bibtex]": {
+    // インデント幅を2にする
+    "editor.tabSize": 2
+  },
+  // ---------- LaTeX Workshop ----------
+  // 使用パッケージのコマンドや環境の補完を有効にする
+  "latex-workshop.intellisense.package.enabled": true,
+  // 生成ファイルを削除するときに対象とするファイル
+  // デフォルト値に "*.synctex.gz" を追加
+  "latex-workshop.latex.clean.fileTypes": [
+    "*.aux",
+    "*.bbl",
+    "*.blg",
+    "*.idx",
+    "*.ind",
+    "*.lof",
+    "*.lot",
+    "*.out",
+    "*.toc",
+    "*.acn",
+    "*.acr",
+    "*.alg",
+    "*.glg",
+    "*.glo",
+    "*.gls",
+    "*.ist",
+    "*.fls",
+    "*.log",
+    "*.fdb_latexmk",
+    "*.snm",
+    "*.nav",
+    "*.dvi",
+    "*.synctex.gz"
+  ],
+  // 生成ファイルを "out" ディレクトリに吐き出す
+  "latex-workshop.latex.outDir": "out",
+  // ビルドのレシピ
+  "latex-workshop.latex.recipes": [
+    {
+      "name": "latexmk",
+      "tools": [
+        "latexmk"
+      ]
+    }
+  ],
+  // ビルドのレシピに使われるパーツ
+  "latex-workshop.latex.tools": [
+    {
+      "name": "latexmk",
+      "command": "latexmk",
+      "args": [
+        "-silent",
+        "-outdir=%OUTDIR%",
+        "%DOC%"
+      ]
+    }
+  ],
+  "editor.inlineSuggest.enabled": true,
+  "explorer.confirmDelete": false,
+  "explorer.confirmDragAndDrop": false,
+  "solidity.compileUsingRemoteVersion": "v0.8.7+commit.e28d00a7",
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "workbench.startupEditor": "none",
+  "editor.formatOnSave": false,
+  "[typescript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+  "[rust]": {
+    "editor.defaultFormatter": "rust-lang.rust-analyzer",
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": true
+  },
+  "rust-analyzer.server.extraEnv": {
+    "CARGO_NET_GIT_FETCH_WITH_CLI": "true"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "npm.keybindingsChangedWarningShown": true,
+  "cSpell.userWords": [
+    "blocksremittances",
+    "chrono",
+    "dotenv",
+    "Hasher",
+    "hoge",
+    "Insertable",
+    "merkle",
+    "plonky",
+    "rootkinds",
+    "Secp"
+  ],
+  "git.autofetch": true,
+  "diffEditor.ignoreTrimWhitespace": false,
+  "[markdown]": {
+    "editor.defaultFormatter": "DavidAnson.vscode-markdownlint"
+  },
+  "window.autoDetectColorScheme": true,
+  "window.newWindowDimensions": "inherit",
+  "window.openFilesInNewWindow": "on",
+  "git.confirmSync": false,
+  "git.ignoreRebaseWarning": true,
+  "git.openRepositoryInParentFolders": "always",
+  "deepl.apiKey": null,
+  "terminal.integrated.fontFamily": "Inconsolata for Powerline",
+  "[python]": {
+    "editor.formatOnType": true
+  },
+  "python.analysis.extraPaths": [
+    "/opt/homebrew/Cellar/python@3.10/3.10.6_1/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages"
+  ],
+  "files.watcherInclude": [
+    "/opt/homebrew/Cellar/python@3.10/3.10.6_1/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages"
+  ],
+  "python.autoComplete.extraPaths": [
+    "/opt/homebrew/Cellar/python@3.10/3.10.6_1/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages"
+  ],
+  "[jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "github.copilot.enable": {
+    "*": true,
+    "yaml": true,
+    "plaintext": false,
+    "markdown": false
+  },
+  "redhat.telemetry.enabled": true,
+}
+
