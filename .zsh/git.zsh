@@ -1,0 +1,7 @@
+alias gbd='git branch -D'
+alias gcb='git checkout -b'
+alias gcmm='git commit -m'
+alias ghp='cat ~/git_in_omz.text'
+alias gtr='git log --graph --all --format="%x09%C(cyan bold)%an%Creset%x09%C(yellow)%h%Creset %C(magenta reverse)%d%Creset %s"'
+alias commitfilesname='git show commit_id --name-only'
+alias fgbd='git branch | fzf -m | xargs -I {} git branch -D {}'
