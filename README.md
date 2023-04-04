@@ -16,3 +16,7 @@ https://qiita.com/yutkat/items/c6c7584d9795799ee164
     "format": "prettier --write --ignore-path .gitignore './**/*.{js,jsx,ts,tsx,json,css,scss}'"
   }
 ```
+
+# Github Actions
+- CIはpush, PR作成時に実行する
+- 失敗時にdiscordに通知するので、webhookを別途設定する
