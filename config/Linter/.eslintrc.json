@@ -1,0 +1,99 @@
+{
+    "root": true,
+    "env": {
+      "browser": true,
+      "es6": true,
+      "node": true
+    },
+    "settings": {
+      "react": {
+        "version": "detect"
+      }
+    },
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+      "sourceType": "module",
+      "ecmaVersion": "latest",
+      "ecmaFeatures": {
+        "jsx": true
+      },
+      "project": "./tsconfig.eslint.json"
+    },
+    "plugins": [
+      "import",
+      "unused-imports",
+      "typescript-sort-keys",
+      "@typescript-eslint",
+      "sort-keys-fix",
+      "react"
+    ],
+    "extends": [
+      "next/core-web-vitals",
+      "eslint:recommended",
+      "plugin:@typescript-eslint/eslint-recommended",
+      "plugin:@typescript-eslint/recommended",
+      "plugin:react/recommended",
+      "prettier"
+    ],
+    "rules": {
+      //Import
+      "import/no-duplicates": "error",
+      "unused-imports/no-unused-imports": "error",
+      "import/order": [
+        "error",
+        {
+          "groups": [
+            [
+              "external",
+              "builtin"
+            ],
+            "internal",
+            "parent",
+            "sibling",
+            "index",
+            "object",
+            "type"
+          ],
+          "pathGroups": [
+            {
+              "pattern": "react",
+              "group": "builtin",
+              "position": "before"
+            },
+            {
+              "pattern": "@src/**",
+              "group": "parent",
+              "position": "before"
+            },
+            {
+              "pattern": "@/**",
+              "group": "internal"
+            }
+          ],
+          "pathGroupsExcludedImportTypes": [
+            "builtin"
+          ],
+          "newlines-between": "always-and-inside-groups", // ここを変更
+          "alphabetize": {
+            "order": "asc"
+          }
+        }
+      ],
+      //Typescript
+      "@typescript-eslint/explicit-function-return-type": 0,
+      "@typescript-eslint/no-explicit-any": 0,
+      "@typescript-eslint/no-empty-function": 0,
+      "@typescript-eslint/ban-ts-comment": 0,
+      "typescript-sort-keys/interface": "error",
+      //React
+      "react/prop-types": 0,
+      "react/react-in-jsx-scope": 0,
+      "react/jsx-sort-props": "error",
+      "@next/next/no-img-element": "off",
+      //General
+      "comma-dangle": "off",
+      "no-empty-function": 0,
+      "sort-keys-fix/sort-keys-fix": "error"
+    }
+  }
+  
