@@ -1,7 +1,3 @@
-
-# プレビュー
-alias fzp='fzf --preview "head -100 {}"'
-
 # fzfでbraveの検索履歴を検索する
 fbrave() {
     local cols sep brave_history open
@@ -23,7 +19,6 @@ fbrave() {
 }
 
 # cdrで過去に行ったことのあるディレクトリを表示し、fzfで絞り込んでディレクトリに移動する
-alias cdd='fzf-cdr'
 function fzf-cdr() {
     target_dir=`cdr -l | sed 's/^[^ ][^ ]*  *//' | fzf`
     target_dir=`echo ${target_dir/\~/$HOME}`
@@ -58,7 +53,6 @@ fvim() {
     )
     vi "$file"
 }
-alias fv="fvim"
 
 # zsh-autocomplete
 source ~/dotfiles/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh
@@ -109,4 +103,16 @@ fshow() {
                     xargs -I % sh -c 'git show --color=always % | less -R') << 'FZF-EOF'
                     {}
     FZF-EOF"
+}
+
+    # fzf_recent_command - search and reuse the recently used command
+fzf_unique_recent_command() {
+  local selected_command=$(history | tac | awk '{$1=""; print substr($0,2)}' | fzf --prompt="Search unique command: " --height=20 --reverse)
+
+  if [[ -n "$selected_command" ]]; then
+    echo "Executing command: $selected_command"
+    eval "$selected_command"
+  else
+    echo "No command selected."
+  fi
 }
