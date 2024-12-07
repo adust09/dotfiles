@@ -1,3 +1,20 @@
+# zsh-autocomplete
+source ~/dotfiles/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+
+# 補完機能を有効にする
+autoload -Uz compinit
+compinit -u
+if [ -e /usr/local/share/zsh-completions ]; then
+    fpath=(/usr/local/share/zsh-completions $fpath)
+fi
+
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+setopt list_packed
+autoload colors
+zstyle ':completion:*' list-colors ''
+setopt correct
+
+
 # fzfでbraveの検索履歴を検索する
 fbrave() {
     local cols sep brave_history open
@@ -19,7 +36,7 @@ fbrave() {
 }
 
 # cdrで過去に行ったことのあるディレクトリを表示し、fzfで絞り込んでディレクトリに移動する
-function fzf-cdr() {
+function fcd() {
     target_dir=`cdr -l | sed 's/^[^ ][^ ]*  *//' | fzf`
     target_dir=`echo ${target_dir/\~/$HOME}`
     if [ -n "$target_dir" ]; then
@@ -38,12 +55,6 @@ then
     zstyle ':completion:*' recent-dirs-insert both
 fi
 
-# fd - cd to selected directory
-fda() {
-    local dir
-    dir=$(find ${1:-.} -type d 2> /dev/null | fzf +m) && cd "$dir"
-}
-
 # fvim: ファイル名検索+Vimで開くファイルをカレントディレクトリからfzfで検索可能に
 fvim() {
     local file
@@ -54,57 +65,6 @@ fvim() {
     vi "$file"
 }
 
-# zsh-autocomplete
-source ~/dotfiles/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh
-
-# 補完機能を有効にする
-autoload -Uz compinit
-compinit -u
-if [ -e /usr/local/share/zsh-completions ]; then
-    fpath=(/usr/local/share/zsh-completions $fpath)
-fi
-
-# 補完で小文字でも大文字にマッチさせる
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
-
-# 補完候補を詰めて表示
-setopt list_packed
-
-# 補完候補一覧をカラー表示
-autoload colors
-zstyle ':completion:*' list-colors ''
-
-# コマンドのスペルを訂正
-setopt correct
-
-# fbr - checkout git branch (including remote branches)
-fbr() {
-    local branches branch
-    branches=$(git branch --all | grep -v HEAD) &&
-    branch=$(echo "$branches" |
-            fzf-tmux -d $(( 2 + $(wc -l <<< "$branches") )) +m) &&
-    git checkout $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
-}
-
-if type brew &>/dev/null; then
-    FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
-
-    autoload -Uz compinit
-    compinit
-fi
-
-# fshow - git commit browser
-fshow() {
-    git log --graph --color=always \
-        --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" "$@" |
-    fzf --ansi --no-sort --reverse --tiebreak=index --bind=ctrl-s:toggle-sort \
-        --bind "ctrl-m:execute:
-                    (grep -o '[a-f0-9]\{7\}' | head -1 |
-                    xargs -I % sh -c 'git show --color=always % | less -R') << 'FZF-EOF'
-                    {}
-    FZF-EOF"
-}
-
 # search history and do it
 fh() {
   local cmd
@@ -113,7 +73,6 @@ fh() {
     eval "$cmd"
   fi
 }
-alias fh="fh"
 
 # search ssh-host and connect it
 fssh() {
@@ -123,13 +82,11 @@ fssh() {
     ssh "$host"
   fi
 }
-alias fssh="fssh"
 
 # search environment variable
 fev() {
   printenv | fzf --height=20 --reverse --prompt="Search environment variable: "
 }
-alias fev="fev"
 
 # search process and kill it
 fpkill() {
@@ -139,14 +96,3 @@ fpkill() {
     kill -9 "$pid"
   fi
 }
-alias fpkill="fpkill"
-
-# quick cd dir
-fcd() {
-  local dir
-  dir=$(find ${1:-.} -type d 2> /dev/null | fzf --height=20 --reverse --prompt="Select directory: ")
-  if [[ -n "$dir" ]]; then
-    cd "$dir" || return
-  fi
-}
-alias fcd="fcd"
