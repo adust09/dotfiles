@@ -105,14 +105,11 @@ fshow() {
     FZF-EOF"
 }
 
-    # fzf_recent_command - search and reuse the recently used command
-fzf_unique_recent_command() {
-  local selected_command=$(history | tac | awk '{$1=""; print substr($0,2)}' | fzf --prompt="Search unique command: " --height=20 --reverse)
-
-  if [[ -n "$selected_command" ]]; then
-    echo "Executing command: $selected_command"
-    eval "$selected_command"
-  else
-    echo "No command selected."
+fh() {
+  local cmd
+  cmd=$(history | tac | awk '{$1=""; print substr($0,2)}' | fzf --height=20 --reverse --prompt="Search history: ")
+  if [[ -n "$cmd" ]]; then
+    eval "$cmd"
   fi
 }
+alias fh="fh"
