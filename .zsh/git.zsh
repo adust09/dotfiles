@@ -33,3 +33,64 @@ fshow() {
                     {}
     FZF-EOF"
 }
+
+fstash() {
+  local stash
+  stash=$(git stash list | fzf --height=20 --reverse --prompt="Select stash: ")
+  [[ -n "$stash" ]] && git stash apply "$(echo $stash | awk '{print $1}')"
+}
+
+freset() {
+  local commit
+  commit=$(git log --oneline --graph --color=always | fzf --ansi --height=20 --reverse --prompt="Select commit to reset: ")
+  [[ -n "$commit" ]] && git reset --hard "$(echo $commit | awk '{print $1}')"
+}
+
+fdiff() {
+  local file
+  file=$(git diff --name-only | fzf --height=20 --reverse --prompt="Select file: ")
+  [[ -n "$file" ]] && git diff "$file" | less
+}
+
+fmerge() {
+  local branch
+  branch=$(git branch --all | grep -v 'HEAD' | sed 's/^[ *]*//' | fzf --prompt="Select branch to merge: " --height=20 --reverse)
+  [[ -n "$branch" ]] && git merge "$(echo $branch | sed 's#remotes/[^/]*/##')"
+}
+
+fclean() {
+  local file
+  file=$(git clean -nd | fzf --height=20 --reverse --prompt="Select file to delete: " | awk '{print $NF}')
+  [[ -n "$file" ]] && git clean -f "$file"
+}
+
+frebase() {
+  local branch
+  branch=$(git branch --all | grep -v 'HEAD' | sed 's/^[ *]*//' | fzf --prompt="Select branch to rebase onto: " --height=20 --reverse)
+  [[ -n "$branch" ]] && git rebase "$(echo $branch | sed 's#remotes/[^/]*/##')"
+}
+
+fgpull() {
+  local remote
+  remote=$(git remote -v | awk '{print $1}' | sort -u | fzf --prompt="Select remote: " --height=20 --reverse)
+  [[ -n "$remote" ]] && git pull "$remote"
+}
+
+user_name=$(git config user.name)
+fmt="\
+%(if:equals=$user_name)%(authorname)%(then)%(color:default)%(else)%(color:brightred)%(end)%(refname:short)|\
+%(committerdate:relative)|\
+%(subject)"
+function select-git-branch-friendly() {
+  selected_branch=$(
+    git branch --sort=-committerdate --format=$fmt --color=always \
+    | column -ts'|' \
+    | fzf --ansi --exact --preview='git log --oneline --graph --decorate --color=always -50 {+1}' \
+    | awk '{print $1}' \
+  )
+  BUFFER="${LBUFFER}${selected_branch}${RBUFFER}"
+  CURSOR=$#LBUFFER+$#selected_branch
+  zle redisplay
+}
+zle -N select-git-branch-friendly
+bindkey '^b' select-git-branch-friendly
