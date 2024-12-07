@@ -105,6 +105,7 @@ fshow() {
     FZF-EOF"
 }
 
+# search history and do it
 fh() {
   local cmd
   cmd=$(history | tac | awk '{$1=""; print substr($0,2)}' | fzf --height=20 --reverse --prompt="Search history: ")
@@ -113,3 +114,39 @@ fh() {
   fi
 }
 alias fh="fh"
+
+# search ssh-host and connect it
+fssh() {
+  local host
+  host=$(cat ~/.ssh/known_hosts | cut -f 1 -d ' ' | sort -u | fzf --height=20 --reverse --prompt="Select SSH host: ")
+  if [[ -n "$host" ]]; then
+    ssh "$host"
+  fi
+}
+alias fssh="fssh"
+
+# search environment variable
+fev() {
+  printenv | fzf --height=20 --reverse --prompt="Search environment variable: "
+}
+alias fev="fev"
+
+# search process and kill it
+fpkill() {
+  local pid
+  pid=$(ps -ef | fzf --height=20 --reverse --prompt="Select process to kill: " | awk '{print $2}')
+  if [[ -n "$pid" ]]; then
+    kill -9 "$pid"
+  fi
+}
+alias fpkill="fpkill"
+
+# quick cd dir
+fcd() {
+  local dir
+  dir=$(find ${1:-.} -type d 2> /dev/null | fzf --height=20 --reverse --prompt="Select directory: ")
+  if [[ -n "$dir" ]]; then
+    cd "$dir" || return
+  fi
+}
+alias fcd="fcd"
