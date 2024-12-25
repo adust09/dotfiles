@@ -19,46 +19,38 @@
   "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,
   "files.watcherInclude": [
-    "/opt/homebrew/Cellar/python@3.10/3.10.6_1/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages"
+    "**/node_modules",
+    "**/.git",
+    "**/.DS_Store",
+    "**/.vscode",
+    "**/__pycache__"
   ],
-  //Language Specific Settings
   "terminal.integrated.scrollback": 2000000,
-  "editor.minimap.enabled": false, // ミニマップを非表示にする
-  "editor.renderControlCharacters": true, // 制御文字を表示する
-  "editor.suggestSelection": "first", // サジェスト一覧の初期表示項目設定
-  "breadcrumbs.enabled": true, // ファイルのパンくずリストを表示する
-  "files.insertFinalNewline": true, // ファイルの末尾を改行で終わらせる
+  "editor.minimap.enabled": false,
+  "editor.renderControlCharacters": true,
+  "editor.suggestSelection": "first",
+  "breadcrumbs.enabled": true,
+  "files.insertFinalNewline": true,
   "editor.fontFamily": "'Fira Code', Hasklig, Consolas, 'Courier New', monospace",
-  "editor.fontLigatures": true, // 合字を有効化
-  "editor.fontSize": 12, // フォントサイズを変更
-  "editor.renderLineHighlight": "all", // 選択行の行番号をハイライトする
-  "editor.cursorBlinking": "smooth", // カーソルが滑らかに点滅するように
-  "editor.cursorSmoothCaretAnimation": "on", // カーソルの点滅をアニメーション表示する
-  "editor.cursorStyle": "block", // カーソルの外観をブロックに変更
-  "files.autoGuessEncoding": true, // 画面全体の表示サイズはデフォルト
-  "editor.bracketPairColorization.enabled": true, // 括弧の対応を色付ける
-  // ---------- Language ----------
+  "editor.fontLigatures": true,
+  "editor.fontSize": 12,
+  "editor.renderLineHighlight": "all", 
+  "editor.cursorBlinking": "smooth", 
+  "editor.cursorSmoothCaretAnimation": "on", 
+  "editor.cursorStyle": "block", 
+  "files.autoGuessEncoding": true, 
   "[tex]": {
-    // スニペット補完中にも補完を使えるようにする
     "editor.suggest.snippetsPreventQuickSuggestions": false,
-    // インデント幅を2にする
     "editor.tabSize": 2
   },
   "[latex]": {
-    // スニペット補完中にも補完を使えるようにする
     "editor.suggest.snippetsPreventQuickSuggestions": false,
-    // インデント幅を2にする
     "editor.tabSize": 2
   },
   "[bibtex]": {
-    // インデント幅を2にする
     "editor.tabSize": 2
   },
-  // ---------- LaTeX Workshop ----------
-  // 使用パッケージのコマンドや環境の補完を有効にする
   "latex-workshop.intellisense.package.enabled": true,
-  // 生成ファイルを削除するときに対象とするファイル
-  // デフォルト値に "*.synctex.gz" を追加
   "latex-workshop.latex.clean.fileTypes": [
     "*.aux",
     "*.bbl",
@@ -84,9 +76,7 @@
     "*.dvi",
     "*.synctex.gz"
   ],
-  // 生成ファイルを "out" ディレクトリに吐き出す
   "latex-workshop.latex.outDir": "out",
-  // ビルドのレシピ
   "latex-workshop.latex.recipes": [
     {
       "name": "latexmk",
@@ -95,7 +85,6 @@
       ]
     }
   ],
-  // ビルドのレシピに使われるパーツ
   "latex-workshop.latex.tools": [
     {
       "name": "latexmk",
@@ -112,7 +101,6 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[typescript]": {
-    // "editor.defaultFormatter": "vscode.typescript-language-features",
     "editor.formatOnSave": true,
     "editor.tabSize": 2,
     "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -128,11 +116,11 @@
   },
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.tabSize": 2,
+    "editor.tabSize": 2
   },
   "[json]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.tabSize": 2,
+    "editor.tabSize": 2
   },
   "[css]": {
     "editor.tabSize": 2
@@ -145,14 +133,10 @@
   },
   "[python]": {
     "editor.formatOnType": true,
-    "editor.defaultFormatter": "ms-python.black-formatter",
+    "editor.defaultFormatter": "ms-python.black-formatter"
   },
-  "python.analysis.extraPaths": [
-    "/opt/homebrew/Cellar/python@3.10/3.10.6_1/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages"
-  ],
-  "python.autoComplete.extraPaths": [
-    "/opt/homebrew/Cellar/python@3.10/3.10.6_1/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages"
-  ],
+  "python.analysis.extraPaths": [],
+  "python.autoComplete.extraPaths": [],
   "[jsonc]": {
     "editor.defaultFormatter": "vscode.json-language-features"
   },
@@ -176,5 +160,5 @@
     "plonky",
     "rootkinds",
     "Secp"
-  ],
+  ]
 }
