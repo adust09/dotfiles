@@ -22,6 +22,11 @@ export GOROOT=$(brew --prefix go)/libexec
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 
+# 追加でexec $SHELL実行しないと反映されない
+export PATH="$HOME/.pyenv/shims:$PATH"
+eval "$(pyenv init --path)"
+eval "$(pyenv init -)"
+
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/opt/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
