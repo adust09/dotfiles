@@ -1,16 +1,14 @@
 {
-  "workbench.startupEditor": "none",
   "workbench.colorCustomizations": {
-    "statusBar.background": "#2c2e2ea5",
-    "statusBar.noFolderBackground": "#212121",
-    "statusBar.debuggingBackground": "#f06204"
+      "statusBar.background": "#2c2e2ea5",
+      "statusBar.noFolderBackground": "#212121",
+      "statusBar.debuggingBackground": "#f06204"
   },
   "editor.formatOnSave": false,
   "editor.inlineSuggest.enabled": true,
   "window.autoDetectColorScheme": true,
   "window.newWindowDimensions": "inherit",
   "window.openFilesInNewWindow": "on",
-  "deepl.apiKey": null,
   "terminal.integrated.fontFamily": "Inconsolata for Powerline",
   "redhat.telemetry.enabled": true,
   "vscode-pets.theme": "beach",
@@ -19,11 +17,11 @@
   "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,
   "files.watcherInclude": [
-    "**/node_modules",
-    "**/.git",
-    "**/.DS_Store",
-    "**/.vscode",
-    "**/__pycache__"
+      "**/node_modules",
+      "**/.git",
+      "**/.DS_Store",
+      "**/.vscode",
+      "**/__pycache__"
   ],
   "terminal.integrated.scrollback": 2000000,
   "editor.minimap.enabled": false,
@@ -31,134 +29,234 @@
   "editor.suggestSelection": "first",
   "breadcrumbs.enabled": true,
   "files.insertFinalNewline": true,
-  "editor.fontFamily": "'Fira Code', Hasklig, Consolas, 'Courier New', monospace",
+  "editor.fontFamily": "'Intel One Mono'",
   "editor.fontLigatures": true,
   "editor.fontSize": 12,
-  "editor.renderLineHighlight": "all", 
-  "editor.cursorBlinking": "smooth", 
-  "editor.cursorSmoothCaretAnimation": "on", 
-  "editor.cursorStyle": "block", 
-  "files.autoGuessEncoding": true, 
+  "editor.renderLineHighlight": "all",
+  "editor.cursorBlinking": "smooth",
+  "editor.cursorSmoothCaretAnimation": "on",
+  "editor.cursorStyle": "block",
+  "files.autoGuessEncoding": true,
+  "editor.bracketPairColorization.enabled": true,
   "[tex]": {
-    "editor.suggest.snippetsPreventQuickSuggestions": false,
-    "editor.tabSize": 2
+      "editor.suggest.snippetsPreventQuickSuggestions": false,
+      "editor.tabSize": 2
   },
   "[latex]": {
-    "editor.suggest.snippetsPreventQuickSuggestions": false,
-    "editor.tabSize": 2
+      "editor.suggest.snippetsPreventQuickSuggestions": false,
+      "editor.tabSize": 2
   },
   "[bibtex]": {
-    "editor.tabSize": 2
+      "editor.tabSize": 2
   },
   "latex-workshop.intellisense.package.enabled": true,
   "latex-workshop.latex.clean.fileTypes": [
-    "*.aux",
-    "*.bbl",
-    "*.blg",
-    "*.idx",
-    "*.ind",
-    "*.lof",
-    "*.lot",
-    "*.out",
-    "*.toc",
-    "*.acn",
-    "*.acr",
-    "*.alg",
-    "*.glg",
-    "*.glo",
-    "*.gls",
-    "*.ist",
-    "*.fls",
-    "*.log",
-    "*.fdb_latexmk",
-    "*.snm",
-    "*.nav",
-    "*.dvi",
-    "*.synctex.gz"
+      "*.aux",
+      "*.bbl",
+      "*.blg",
+      "*.idx",
+      "*.ind",
+      "*.lof",
+      "*.lot",
+      "*.out",
+      "*.toc",
+      "*.acn",
+      "*.acr",
+      "*.alg",
+      "*.glg",
+      "*.glo",
+      "*.gls",
+      "*.ist",
+      "*.fls",
+      "*.log",
+      "*.fdb_latexmk",
+      "*.snm",
+      "*.nav",
+      "*.dvi",
+      "*.synctex.gz"
   ],
   "latex-workshop.latex.outDir": "out",
   "latex-workshop.latex.recipes": [
-    {
-      "name": "latexmk",
-      "tools": [
-        "latexmk"
-      ]
-    }
+      {
+          "name": "latexmk",
+          "tools": [
+              "latexmk"
+          ]
+      }
   ],
   "latex-workshop.latex.tools": [
-    {
-      "name": "latexmk",
-      "command": "latexmk",
-      "args": [
-        "-silent",
-        "-outdir=%OUTDIR%",
-        "%DOC%"
-      ]
-    }
+      {
+          "name": "latexmk",
+          "command": "latexmk",
+          "args": [
+              "-silent",
+              "-outdir=%OUTDIR%",
+              "%DOC%"
+          ]
+      }
   ],
   "solidity.compileUsingRemoteVersion": "v0.8.7+commit.e28d00a7",
+  "[javascriptreact]": {
+      "editor.formatOnSave": true,
+      "editor.tabSize": 2,
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
   "[typescriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[typescript]": {
-    "editor.formatOnSave": true,
-    "editor.tabSize": 2,
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[rust]": {
-    "editor.defaultFormatter": "rust-lang.rust-analyzer",
-    "editor.tabSize": 2,
-    "editor.formatOnSave": true,
-    "editor.formatOnPaste": true
-  },
-  "rust-analyzer.server.extraEnv": {
-    "CARGO_NET_GIT_FETCH_WITH_CLI": "true"
+      "editor.formatOnSave": true,
+      "editor.tabSize": 2,
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.tabSize": 2
+      "editor.formatOnSave": true,
+      "editor.tabSize": 2,
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+
+  "[typescript]": {
+      "editor.formatOnSave": true,
+      "editor.tabSize": 2,
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[yaml]": {
+      "editor.formatOnSave": true,
+      "editor.tabSize": 2,
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[go]": {
+      "editor.formatOnSave": true,
+      "editor.tabSize": 2,
+      "editor.defaultFormatter": "golang.go"
+  },
+  "[rust]": {
+      "editor.defaultFormatter": "rust-lang.rust-analyzer",
+      "editor.tabSize": 2,
+      "editor.formatOnSave": true,
+      "editor.formatOnPaste": true,
+      "editor.inlayHints.enabled": "on"
+  },
+  "rust-analyzer.diagnostics.disabled": [
+      "unresolved-proc-macro"
+  ],
+  "rust-analyzer.server.extraEnv": {
+      "CARGO_NET_GIT_FETCH_WITH_CLI": "true"
+  },
+  "[noir]": {
+      "editor.defaultFormatter": "rust-lang.rust-analyzer",
+      "editor.tabSize": 2,
+      "editor.formatOnSave": true,
+      "editor.formatOnPaste": true
+  },
+
+
   "[json]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.tabSize": 2
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
+      "editor.tabSize": 2
   },
   "[css]": {
-    "editor.tabSize": 2
+      "editor.tabSize": 2
   },
-  "npm.keybindingsChangedWarningShown": true,
   "git.autofetch": true,
-  "diffEditor.ignoreTrimWhitespace": false,
   "[markdown]": {
-    "editor.defaultFormatter": "DavidAnson.vscode-markdownlint"
+      "editor.defaultFormatter": "DavidAnson.vscode-markdownlint",
+      "diffEditor.ignoreTrimWhitespace": false
   },
   "[python]": {
-    "editor.formatOnType": true,
-    "editor.defaultFormatter": "ms-python.black-formatter"
+      "editor.formatOnType": true,
+      "editor.defaultFormatter": "ms-python.black-formatter"
   },
   "python.analysis.extraPaths": [],
   "python.autoComplete.extraPaths": [],
   "[jsonc]": {
-    "editor.defaultFormatter": "vscode.json-language-features"
+      "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "[terraform]": {
+      "editor.defaultFormatter": "hashicorp.terraform",
+      "editor.formatOnSave": true,
+      "editor.formatOnSaveMode": "file"
   },
   "github.copilot.enable": {
-    "*": true,
-    "yaml": true,
-    "plaintext": false,
-    "markdown": false
+      "*": true,
+      "plaintext": false,
+      "markdown": true,
+      "scminput": false,
+      "yaml": true
   },
   "git.confirmSync": false,
   "git.ignoreRebaseWarning": true,
   "git.openRepositoryInParentFolders": "always",
   "cSpell.userWords": [
-    "blocksremittances",
-    "chrono",
-    "dotenv",
-    "Hasher",
-    "hoge",
-    "Insertable",
-    "merkle",
-    "plonky",
-    "rootkinds",
-    "Secp"
-  ]
+      "ABNF",
+      "arbitrum",
+      "Basefold",
+      "blocksremittances",
+      "Borsh",
+      "ceno",
+      "chrono",
+      "Ciphertext",
+      "dotenv",
+      "elimity",
+      "Gorm",
+      "Hasher",
+      "hoge",
+      "Insertable",
+      "Keccak",
+      "keycache",
+      "librustzcash",
+      "memuse",
+      "merkle",
+      "mersenne",
+      "mrsk",
+      "plonky",
+      "Rakuten",
+      "Recomposable",
+      "rngs",
+      "rootkinds",
+      "Ryodan",
+      "Secp",
+      "shamir",
+      "stdsimd",
+      "Subtable",
+      "Subtables",
+      "sumcheck",
+      "tfhe",
+      "txns",
+      "valuecommtiment"
+  ],
+  "go.toolsManagement.autoUpdate": true,
+  "files.associations": {
+      "*.nr": "noir"
+  },
+  "circompro.compile.onSave": true,
+  "editor.codeLensFontFamily": "'Intel One Mono'",
+  "githubPullRequests.pullBranch": "never",
+  "editor.stickyScroll.enabled": true,
+  "editor.stickyTabStops": true,
+  "cursor.cpp.disabledLanguages": [
+      "plaintext",
+      "markdown",
+      "scminput"
+  ],
+  "editor.defaultFormatter": "golang.go",
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "cmake.showOptionsMovedNotification": false,
+  "diffEditor.ignoreTrimWhitespace": true,
+  "githubPullRequests.createOnPublishBranch": "never",
+  "rust-analyzer.debug.openDebugPane": true,
+  "rust-analyzer.diagnostics.styleLints.enable": true,
+  "rust-analyzer.completion.termSearch.enable": true,
+  "rust-analyzer.completion.privateEditable.enable": true,
+  "rust-analyzer.completion.fullFunctionSignatures.enable": true,
+  "rust-analyzer.imports.granularity.enforce": true,
+  "rust-analyzer.inlayHints.closureCaptureHints.enable": true,
+  "typescript.experimental.updateImportsOnPaste": true,
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+  "lldb.suppressUpdateNotifications": true,
+  "cursor.cpp.enablePartialAccepts": true,
+  "workbench.activityBar.orientation": "vertical",
+  "cursor.cmdk.useThemedDiffBackground": true,
+  "cursor.diffs.useCharacterLevelDiffs": true,
+  "cursor.terminal.usePreviewBox": true,
+  "cursor.composer.collapsePaneInputBoxPills": true,
+  "cursor.composer.renderPillsInsteadOfBlocks": true,
+  "terminal.integrated.enableMultiLinePasteWarning": false
 }
