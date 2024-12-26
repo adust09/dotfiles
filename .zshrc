@@ -6,6 +6,10 @@ if [ -d $ZSH_DIR ] && [ -r $ZSH_DIR ] && [ -x $ZSH_DIR ]; then
     done
 fi
 
+if [ -f $HOME/dotfiles/env.sh ]; then
+    source $HOME/dotfiles/env.sh
+fi
+
 export PATH=$HOME/.local/bin:$PATH
 export PATH=$HOME/.nodebrew/current/bin:$PATH
 
