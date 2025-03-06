@@ -45,3 +45,6 @@ unset __conda_setup
 
 export PATH="$HOME/.cargo/bin:$PATH"
 eval "$(rbenv init -)"
+
+export PATH="$HOME/go/bin/jwx:$PATH"
+alias rooset='~/dotfiles/.zsh/copy_contents.sh'
