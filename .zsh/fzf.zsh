@@ -96,3 +96,86 @@ fpkill() {
     kill -9 "$pid"
   fi
 }
+# search and checkout git branch using fzf
+fgb() {
+  local branch
+  branch=$(git branch --all --color=always | grep -v '/HEAD\s' | fzf --height=20 --ansi --reverse --prompt="Select git branch: " | sed 's/.* //' | sed 's#remotes/[^/]*/##')
+  if [[ -n "$branch" ]]; then
+    git checkout "$branch"
+  fi
+}
+
+# interactive git worktree creation using fzf
+fwq() {
+  local branch worktree_path
+  
+  # Select branch interactively
+  branch=$(git branch --all --color=always | grep -v '/HEAD\s' | fzf --height=20 --ansi --reverse --prompt="Select branch for worktree: " | sed 's/.* //' | sed 's#remotes/[^/]*/##')
+  
+  if [[ -z "$branch" ]]; then
+    echo "No branch selected"
+    return 1
+  fi
+  
+  # Default worktree path based on branch name
+  local default_path="../worktree-${branch}"
+  
+  # Prompt for worktree path
+  echo -n "Enter worktree path (default: $default_path): "
+  read worktree_path
+  
+  # Use default if no path provided
+  if [[ -z "$worktree_path" ]]; then
+    worktree_path="$default_path"
+  fi
+  
+  # Create the worktree
+  echo "Creating worktree for branch '$branch' at '$worktree_path'"
+  git worktree add "$worktree_path" "$branch"
+  
+  if [[ $? -eq 0 ]]; then
+    echo "Worktree created successfully!"
+    echo "You can now cd to: $worktree_path"
+  else
+    echo "Failed to create worktree"
+  fi
+}
+
+# interactive git worktree deletion using fzf
+fwd() {
+  local worktree_info worktree_path
+  
+  # Get worktree list and select interactively
+  worktree_info=$(git worktree list --porcelain | grep -E '^worktree|^branch' | paste - - | sed 's/worktree //' | sed 's/branch //' | fzf --height=20 --reverse --prompt="Select worktree to delete: " --preview="echo 'Path: {}' | cut -d$'\t' -f1; echo 'Branch: {}' | cut -d$'\t' -f2")
+  
+  if [[ -z "$worktree_info" ]]; then
+    echo "No worktree selected"
+    return 1
+  fi
+  
+  # Extract worktree path
+  worktree_path=$(echo "$worktree_info" | cut -d$'\t' -f1)
+  
+  # Skip if it's the main worktree (usually current directory)
+  if [[ "$worktree_path" == "$(git rev-parse --show-toplevel)" ]]; then
+    echo "Cannot delete the main worktree"
+    return 1
+  fi
+  
+  # Confirmation prompt
+  echo "Are you sure you want to delete worktree at '$worktree_path'? (y/N)"
+  read -r confirmation
+  
+  if [[ "$confirmation" =~ ^[Yy]$ ]]; then
+    echo "Removing worktree at '$worktree_path'"
+    git worktree remove "$worktree_path"
+    
+    if [[ $? -eq 0 ]]; then
+      echo "Worktree removed successfully!"
+    else
+      echo "Failed to remove worktree"
+    fi
+  else
+    echo "Worktree deletion cancelled"
+  fi
+}

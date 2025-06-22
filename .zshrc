@@ -47,4 +47,4 @@ export PATH="$HOME/.cargo/bin:$PATH"
 eval "$(rbenv init -)"
 
 export PATH="$HOME/go/bin/jwx:$PATH"
-alias rooset='~/dotfiles/.zsh/copy_contents.sh'
+alias rooset='~/dotfiles/.zsh/copy-contents.sh'
