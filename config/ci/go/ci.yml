@@ -1,0 +1,81 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        go-version: [1.21, 1.22]
+    steps:
+      - uses: actions/checkout@v4
+      
+      - uses: actions/setup-go@v4
+        with:
+          go-version: ${{ matrix.go-version }}
+          
+      - name: Cache Go modules
+        uses: actions/cache@v3
+        with:
+          path: ~/go/pkg/mod
+          key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
+          restore-keys: |
+            ${{ runner.os }}-go-
+            
+      - name: Download dependencies
+        run: go mod download
+        
+      - name: Run tests
+        run: go test -race -coverprofile=coverage.out ./...
+        
+      - name: Run vet
+        run: go vet ./...
+        
+      - name: Check formatting
+        run: |
+          if [ "$(gofmt -s -l . | wc -l)" -gt 0 ]; then
+            echo "Code is not formatted:"
+            gofmt -s -l .
+            exit 1
+          fi
+          
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v3
+        with:
+          file: ./coverage.out
+          
+  build:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - uses: actions/setup-go@v4
+        with:
+          go-version: 1.22
+          
+      - name: Cache Go modules
+        uses: actions/cache@v3
+        with:
+          path: ~/go/pkg/mod
+          key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
+          restore-keys: |
+            ${{ runner.os }}-go-
+            
+      - name: Download dependencies
+        run: go mod download
+        
+      - name: Build
+        run: go build -o ./bin/ ./...
+        
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: go-binary
+          path: bin/
+          retention-days: 7
