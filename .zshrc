@@ -1,22 +1,8 @@
 ZSH_DIR="${HOME}/dotfiles/.zsh"
 
 if [ -d $ZSH_DIR ] && [ -r $ZSH_DIR ] && [ -x $ZSH_DIR ]; then
-    # Load non-c3 files first
     for file in ${ZSH_DIR}/**/*.zsh; do
-        if [[ ! $(basename "$file") =~ ^c3 ]]; then
-            [ -r $file ] && source $file
-        fi
-    done
-    
-    # Load C3 system components in correct order
-    local c3_files=(
-        "${ZSH_DIR}/c3-pm-agent.zsh"
-        "${ZSH_DIR}/c3-dev-agent.zsh"
-        "${ZSH_DIR}/c3.zsh"
-    )
-    
-    for file in "${c3_files[@]}"; do
-        [ -r "$file" ] && source "$file"
+        [ -r $file ] && source $file
     done
 fi
 
