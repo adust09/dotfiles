@@ -119,7 +119,7 @@
         ]
       }
     ],
-    "PreToolUse": [
+  "PreToolUse": [
       {
         "matcher": "Bash",
         "hooks": [
