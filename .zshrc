@@ -49,4 +49,3 @@ eval "$(rbenv init -)"
 export PATH="$HOME/go/bin/jwx:$PATH"
 alias rooset='~/dotfiles/.zsh/copy-contents.sh'
 
-# DO NOT TOUCH: claude code default setting
