@@ -1,0 +1,63 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+  "ssh_connections": [
+    {
+      "host": "github.com",
+      "args": [],
+      "projects": []
+    },
+    {
+      "host": "gohanserver",
+      "args": [],
+      "projects": []
+    }
+  ],
+  "disable_ai": false,
+  "icon_theme": {
+    "mode": "system",
+    "light": "Zed (Default)",
+    "dark": "Zed (Default)"
+  },
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false
+  },
+  "terminal": {
+    "font_family": "Inconsolata for Powerline",
+    "max_scroll_history_lines": 2000000
+  },
+  "minimap": {
+    "show": "never"
+  },
+  "current_line_highlight": "all",
+  "cursor_shape": "block",
+  "cursor_blink": true,
+  "buffer_font_family": "Intel One Mono",
+  "file_scan_inclusions": [
+    "/opt/homebrew/Cellar/python@3.10/3.10.6_1/Frameworks/Python.framework/Versions/3.10/lib/python3.10/site-packages"
+  ],
+  "file_types": {
+    "noir": [
+      "*.nr",
+      "*.nr"
+    ]
+  },
+  "colorize_brackets": true,
+  "show_edit_predictions": true,
+  "ensure_final_newline_on_save": true,
+  "base_keymap": "VSCode",
+  "ui_font_size": 16,
+  "buffer_font_size": 12.0,
+  "theme": {
+    "mode": "system",
+    "light": "Gruvbox Dark Soft",
+    "dark": "Gruvbox Dark"
+  }
+}
